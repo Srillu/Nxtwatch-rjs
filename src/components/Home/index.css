@@ -1,0 +1,141 @@
+.home-container {
+  display: flex;
+  background-color: #f9f9f9;
+}
+
+* {
+  font-family: 'Roboto';
+}
+
+.banner-container-none {
+  display: none;
+}
+
+.banner-container {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
+  padding: 20px;
+}
+
+.banner-logo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button-banner {
+  background-color: transparent;
+  border: 0px;
+  font-size: 20px;
+}
+
+.banner-logo {
+  height: 30px;
+  width: 200px;
+}
+
+.home-video-container {
+  width: 100%;
+  padding: 15px;
+}
+
+.ul-items {
+  list-style-type: none;
+  /* background-color: aqua; */
+  padding-left: 0px;
+}
+
+.link-item {
+  text-decoration: none;
+}
+
+.search-input-container {
+  border: 1px solid #b6c5ff;
+  display: flex;
+  align-self: flex-start;
+  width: 35%;
+}
+
+.input-box {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 8px;
+  width: 100%;
+  outline: none;
+  align-self: center;
+}
+
+.search-icon-button {
+  width: 52px;
+  height: 34px;
+  background: #edeff1;
+  border: 0px;
+}
+
+.videos-container {
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 0px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-list-item {
+  /* background-color: aquamarine; */
+  max-width: 320px;
+  margin-right: 15px;
+  margin-top: 30px;
+}
+
+.thumbnail-url {
+  height: 150px;
+  width: 300px;
+}
+
+.profile-image-url {
+  height: 35px;
+  width: 35px;
+}
+
+.video-content-container {
+  display: flex;
+  justify-content: flex-start;
+  /* background-color: beige; */
+  width: 300px;
+  margin-top: 10px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 300px;
+
+  /* background-color: aquamarine; */
+}
+
+.failure-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 500px;
+}
+
+.failure-image {
+  height: 350px;
+  width: 400px;
+}
+
+.failure-retry-button {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: #4f46e5;
+  border: 0px solid;
+  height: 30px;
+  width: 80px;
+  border-radius: 4px;
+}

@@ -1,0 +1,48 @@
+.gaming-main-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
+.gaming-container {
+  list-style-type: none;
+  /* background-color: brown; */
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 30px;
+  padding-left: 0px;
+}
+
+.gaming-video-list-item {
+  margin: 15px;
+}
+
+.gaming-thumbnail-url {
+  height: 300px;
+  width: 220px;
+  border-radius: 10px;
+}
+
+.icon-container-round {
+  height: 60px;
+  width: 60px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  background-color: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.loader-gaming {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 300px;
+  margin-left: 500px;
+
+  /* background-color: aquamarine; */
+}

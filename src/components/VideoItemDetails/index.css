@@ -1,0 +1,9 @@
+.video-save-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.responsive-container {
+  height: 50vh;
+  width: 80vw;
+}

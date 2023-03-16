@@ -1,0 +1,49 @@
+.sidebar-container {
+  /* background-color: aquamarine; */
+  width: 15vw;
+  min-width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 20px;
+  background-color: #ffffff;
+}
+
+.link-item {
+  text-decoration: none;
+}
+
+.sidebar-items {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.sidebar-item-heading {
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: ;
+  color: #;
+  margin-left: 20px;
+}
+
+.contact-us-heading {
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: 500;
+  color: #313131;
+}
+
+.sidebar-description {
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 500;
+  color: #313131;
+}
+
+.sidebar-logo {
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+}

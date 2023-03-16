@@ -1,0 +1,38 @@
+.trending-main-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
+.trending-container {
+  list-style-type: none;
+  /* background-color: brown; */
+  margin-left: 30px;
+  padding-left: 0px;
+}
+
+.trending-video-list-item {
+  display: flex;
+  margin-bottom: 35px;
+  /* background-color: aquamarine; */
+}
+
+.trending-thumbnail-url {
+  height: 200px;
+  width: 400px;
+}
+
+.trending-video-content-container {
+  width: 30%;
+  /* background-color: beige; */
+}
+
+.loader-trending {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 300px;
+  margin-left: 500px;
+
+  /* background-color: aquamarine; */
+}
