@@ -7,6 +7,16 @@
   font-family: 'Roboto';
 }
 
+.get-it-button {
+  background-color: transparent;
+  border: 1px solid #475569;
+  color: #475569;
+  font-family: 'Roboto';
+  font-size: 12px;
+  height: 30px;
+  width: 100px;
+}
+
 .banner-container-none {
   display: none;
 }

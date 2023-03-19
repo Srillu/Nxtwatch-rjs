@@ -16,6 +16,14 @@ const VideoItem = props => {
 
   const time = formatDistanceToNow(new Date(publishedAt))
 
+  const s = time.split(' ')
+
+  s.shift()
+
+  const publishedTime = s.join(' ')
+
+  // console.log(publishedTime)
+
   return (
     <Link to={`/videos/${id}`} style={{textDecoration: 'none'}}>
       <li key={id} className="video-list-item">
@@ -81,7 +89,7 @@ const VideoItem = props => {
                   marginTop: '0px',
                 }}
               >
-                {time}
+                . {publishedTime} ago
               </p>
             </div>
           </div>

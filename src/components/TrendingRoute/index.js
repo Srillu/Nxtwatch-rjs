@@ -2,7 +2,7 @@ import {Component} from 'react'
 
 import {Link} from 'react-router-dom'
 
-import {formatDistanceToNow} from 'date-fns'
+// import {formatDistanceToNow} from 'date-fns'
 
 import {HiFire} from 'react-icons/hi'
 
@@ -43,10 +43,10 @@ class TrendingRoute extends Component {
     }
     const response = await fetch(trendingUrl, options)
 
-    console.log(response)
+    // console.log(response)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
+      //   console.log(data)
       const updatedData = data.videos.map(eachItem => ({
         id: eachItem.id,
         title: eachItem.title,
@@ -56,7 +56,7 @@ class TrendingRoute extends Component {
         name: eachItem.channel.name,
         profileImageUrl: eachItem.channel.profile_image_url,
       }))
-      console.log(updatedData)
+      //   console.log(updatedData)
       this.setState({
         trendingVideosList: updatedData,
         apiStatus: apiStatusConstants.success,
@@ -76,11 +76,12 @@ class TrendingRoute extends Component {
       <nav>
         <ul className="trending-container">
           {trendingVideosList.map(eachItem => (
-            <Link
-              to={`/videos/${eachItem.id}`}
-              style={{textDecoration: 'none'}}
-            >
-              <li key={eachItem.id} className="trending-video-list-item">
+            <li key={eachItem.id}>
+              <Link
+                to={`/videos/${eachItem.id}`}
+                style={{textDecoration: 'none'}}
+                className="trending-video-list-item"
+              >
                 <img
                   alt="video thumbnail"
                   src={eachItem.thumbnailUrl}
@@ -144,8 +145,8 @@ class TrendingRoute extends Component {
                     </div>
                   </div>
                 </div>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ))}
         </ul>
       </nav>
@@ -156,9 +157,9 @@ class TrendingRoute extends Component {
     <>
       <div className="failure-container">
         <img
+          alt="failure view"
           className="failure-image"
           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-          alt="failure view"
         />
         <div style={{textAlign: 'center'}}>
           <h1>Oops! Something Went Wrong</h1>
@@ -167,7 +168,7 @@ class TrendingRoute extends Component {
         </div>
         <button
           type="button"
-          onClick={this.getAllVideos}
+          onClick={this.getTrendingVideos}
           className="failure-retry-button"
         >
           Retry

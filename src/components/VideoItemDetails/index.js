@@ -12,6 +12,8 @@ import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 
 import {MdPlaylistAdd} from 'react-icons/md'
 
+import savedContext from '../../context/savedContext'
+
 import Sidebar from '../Sidebar'
 import Header from '../Header'
 
@@ -25,7 +27,12 @@ const apiStatusConstants = {
 }
 
 class VideoItemDetails extends Component {
-  state = {videoDetails: {}, apiStatus: apiStatusConstants.initial}
+  state = {
+    videoDetails: {},
+    apiStatus: apiStatusConstants.initial,
+    isClickedLike: false,
+    isClickedDislike: false,
+  }
 
   componentDidMount() {
     this.getVideoItemDetails()
@@ -123,60 +130,164 @@ class VideoItemDetails extends Component {
     </div>
   )
 
-  renderVideoItemDetails = () => {
-    const {videoDetails} = this.state
-    const {
-      id,
-      description,
-      title,
-      thumbnailUrl,
-      viewCount,
-      publishedAt,
-      videoUrl,
-      name,
-      profileImageUrl,
-      subscriberCount,
-    } = videoDetails
+  onClickLikeButton = () => {
+    const {isClickedDislike} = this.state
 
-    const time = formatDistanceToNow(new Date(publishedAt))
+    this.setState(prevState => ({
+      isClickedLike: !prevState.isClickedLike,
+    }))
 
-    return (
-      <div style={{margin: '20px'}}>
-        <div className="responsive-container">
-          <ReactPlayer url={videoUrl} />
-        </div>
-        <p>{title}</p>
-        <div className="video-save-container">
-          <div style={{display: 'flex'}}>
-            <p style={{marginRight: '15px'}}>{viewCount}</p>
-            <p>{time}</p>
-          </div>
-
-          <div className="video-save-container">
-            <div style={{marginRight: '10px'}}>
-              <AiOutlineLike />
-              <button type="button">Like</button>
-            </div>
-            <div style={{marginRight: '10px'}}>
-              <AiOutlineDislike />
-              <button type="button">Dislike</button>
-            </div>
-            <div style={{marginRight: '10px'}}>
-              <MdPlaylistAdd />
-              <button type="button">Save</button>
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div>
-          <img alt="channel logo" src={profileImageUrl} />
-          <p>{name}</p>
-          <p>{subscriberCount} Subscribers</p>
-        </div>
-        <p>{description}</p>
-      </div>
-    )
+    if (isClickedDislike) {
+      this.setState(prevState => ({
+        isClickedDislike: !prevState.isClickedDislike,
+      }))
+    }
   }
+
+  onClickDislikeButton = () => {
+    const {isClickedLike} = this.state
+
+    this.setState(prevState => ({
+      isClickedDislike: !prevState.isClickedDislike,
+    }))
+
+    if (isClickedLike) {
+      this.setState(prevState => ({
+        isClickedLike: !prevState.isClickedLike,
+      }))
+    }
+  }
+
+  renderVideoItemDetails = () => (
+    <savedContext.Consumer>
+      {value => {
+        const {addSavedItem, savedList} = value
+
+        const {videoDetails, isClickedLike, isClickedDislike} = this.state
+
+        const toggleClassNameLike = isClickedLike
+          ? 'like-toggle-button'
+          : 'like-button'
+
+        const toggleClassNameDislike = isClickedDislike
+          ? 'like-toggle-button'
+          : 'like-button'
+
+        const {
+          id,
+          description,
+          title,
+          viewCount,
+          publishedAt,
+          videoUrl,
+          name,
+          profileImageUrl,
+          subscriberCount,
+        } = videoDetails
+
+        const isSaved = savedList.find(eachItem => eachItem.id === id)
+
+        const saveText = isSaved ? 'Saved' : 'Save'
+
+        const savedClassName =
+          isSaved !== undefined ? 'like-toggle-button' : 'like-button'
+
+        const onClickSaved = () => {
+          addSavedItem({...videoDetails})
+        }
+
+        const time = formatDistanceToNow(new Date(publishedAt))
+
+        const s = time.split(' ')
+
+        s.shift()
+
+        const publishedTime = s.join(' ')
+
+        return (
+          <div style={{margin: '20px'}}>
+            <div className="responsive-container">
+              <ReactPlayer url={videoUrl} />
+            </div>
+            <p>{title}</p>
+            <div className="video-save-container">
+              <div style={{display: 'flex'}}>
+                <p style={{marginRight: '15px'}}>{viewCount}</p>
+                <p>{publishedTime} ago</p>
+              </div>
+
+              <div className="video-save-container">
+                <div
+                  style={{
+                    marginRight: '10px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <button
+                    type="button"
+                    className={toggleClassNameLike}
+                    onClick={this.onClickLikeButton}
+                  >
+                    <AiOutlineLike />
+                    Like
+                  </button>
+                </div>
+                <div
+                  style={{
+                    marginRight: '10px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <button
+                    type="button"
+                    className={toggleClassNameDislike}
+                    onClick={this.onClickDislikeButton}
+                  >
+                    <AiOutlineDislike />
+                    Dislike
+                  </button>
+                </div>
+                <div
+                  style={{
+                    marginRight: '10px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <button
+                    type="button"
+                    className={savedClassName}
+                    onClick={onClickSaved}
+                  >
+                    <MdPlaylistAdd />
+                    {saveText}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div className="profile-container">
+              <img
+                alt="channel logo"
+                src={profileImageUrl}
+                className="video-detail-profile-image"
+              />
+              <div>
+                <p>{name}</p>
+                <p>{subscriberCount} Subscribers</p>
+                <p>{description}</p>
+              </div>
+            </div>
+          </div>
+        )
+      }}
+    </savedContext.Consumer>
+  )
 
   render() {
     return (

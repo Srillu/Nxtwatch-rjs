@@ -1,7 +1,5 @@
 import {Link, withRouter} from 'react-router-dom'
 
-import {MdOutlineLightMode} from 'react-icons/md'
-
 import Popup from 'reactjs-popup'
 
 import Cookies from 'js-cookie'
@@ -35,11 +33,7 @@ const Header = props => {
           <Popup
             modal
             trigger={
-              <button
-                type="button"
-                onClick={onClickLogout}
-                className="header-logout-button"
-              >
+              <button type="button" className="header-logout-button">
                 Logout
               </button>
             }

@@ -7,3 +7,25 @@
   height: 50vh;
   width: 80vw;
 }
+
+.profile-container {
+  display: flex;
+}
+
+.video-detail-profile-image {
+  height: 50px;
+  width: 50px;
+  margin-top: 15px;
+}
+
+.like-toggle-button {
+  color: #2563eb;
+  background-color: transparent;
+  border-width: 0px;
+}
+
+.like-button {
+  background-color: transparent;
+  border-width: 0px;
+  color: #64748b;
+}

@@ -48,7 +48,7 @@ class Home extends Component {
     }
     const response = await fetch(videoUrl, options)
 
-    console.log(response)
+    // console.log(response)
     if (response.ok === true) {
       const data = await response.json()
       console.log(data)
@@ -61,7 +61,7 @@ class Home extends Component {
         name: eachItem.channel.name,
         profileImageUrl: eachItem.channel.profile_image_url,
       }))
-      console.log(updatedData)
+      // console.log(updatedData)
       this.setState({
         videosList: updatedData,
         apiStatus: apiStatusConstants.success,
@@ -83,7 +83,7 @@ class Home extends Component {
     const {videosList} = this.state
     const lengthView = videosList.length <= 0
 
-    console.log(lengthView)
+    // console.log(lengthView)
 
     return lengthView ? (
       <div className="failure-container">
@@ -174,8 +174,8 @@ class Home extends Component {
         <div className="home-container">
           <Sidebar />
           <div>
-            <div className={bannerButton}>
-              <div className="banner-logo-container" data-testid="banner">
+            <div className={bannerButton} data-testid="banner">
+              <div className="banner-logo-container">
                 <img
                   className="banner-logo"
                   alt="nxt watch logo"
@@ -183,8 +183,8 @@ class Home extends Component {
                 />
                 <div>
                   <button
-                    type="button"
                     data-testid="close"
+                    type="button"
                     className="close-button-banner"
                     onClick={this.onClickCloseButton}
                   >
@@ -194,7 +194,9 @@ class Home extends Component {
               </div>
 
               <p>Buy Nxt Watch Premium prepaid plans with UPI</p>
-              <button type="button">GET IT NOW</button>
+              <button type="button" className="get-it-button">
+                GET IT NOW
+              </button>
             </div>
 
             <div className="home-video-container">

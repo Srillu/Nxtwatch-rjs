@@ -5,3 +5,8 @@
   align-items: center;
   margin-left: 300px;
 }
+
+.not-found-image{
+    height: 300px;
+    width: 300px;
+}

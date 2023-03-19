@@ -71,11 +71,12 @@ class GamingRoute extends Component {
       <nav>
         <ul className="gaming-container">
           {gamingVideosList.map(eachItem => (
-            <Link
-              to={`/videos/${eachItem.id}`}
-              style={{textDecoration: 'none'}}
-            >
-              <li key={eachItem.id} className="gaming-video-list-item">
+            <li key={eachItem.id}>
+              <Link
+                to={`/videos/${eachItem.id}`}
+                style={{textDecoration: 'none'}}
+                className="gaming-video-list-item"
+              >
                 <img
                   alt="video thumbnail"
                   src={eachItem.thumbnailUrl}
@@ -128,8 +129,8 @@ class GamingRoute extends Component {
                     </div>
                   </div>
                 </div>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ))}
         </ul>
       </nav>
@@ -140,9 +141,9 @@ class GamingRoute extends Component {
     <>
       <div className="failure-container">
         <img
+          alt="failure view"
           className="failure-image"
           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-          alt="failure view"
         />
         <div style={{textAlign: 'center'}}>
           <h1>Oops! Something Went Wrong</h1>
